@@ -1,0 +1,441 @@
+//$font-big:30px;
+//$font-title:24px;
+//$font-normal:18px;
+//$font-little:16px;
+//$font-small:14px;
+//
+//$color-panel:#449630;
+//$color-title:#fff;
+//$color-content:#545454;
+//$color-arrow:#B5D4AB;
+//$color-type:#7F7F7F;
+//$color-panel-content:#808080;
+//
+//
+//$bg-panel-title:#E6F0E5;
+//$bg-title:#44972F;
+//$bg:#F1F1F1;
+//$bg-panel-content:#FAFAFA;
+//$bg-login-btn:#6AAA59;
+//
+//$border-panel-text:#CBD3C8;
+//$border-login:#287715;
+//$border-price:#F55F44;
+//
+//
+//
+//
+//*{
+//  padding:0;
+//  margin: 0;
+//}
+//
+//body{
+//  font-family: 'Microsoft Yahei', 'Simsun', Tahoma, Geneva;
+//  font-size: $font-normal;
+//  background-color: $bg;
+//  color: $color-content;
+//  overflow-x: hidden;
+//}
+//
+//li{
+//  list-style: none;
+//}
+//
+//a{
+//  text-decoration: none;
+//  color: $color-content;
+//}
+//
+//input{
+//  outline: none;
+//}
+//
+//.ng-enter{
+//  z-index: 2000;
+//  animation:fadeInLeft 1s;
+//  -webkit-animation: fadeInLeft 1s;
+//}
+//.ng-leave{
+//  z-index:1000;
+//  animation:fadeOutRight 1s;
+//  -webkit-animation: fadeOutRight 1s;
+//}
+//
+//
+//
+//.container{
+//  position:absolute;
+//}
+//
+//@media screen and (min-width: 731px) {
+//  .container{
+//    width: 730px;
+//    margin-left:-365px ;
+//    left: 50%;
+//  }
+//}
+//
+//.shadow{
+//  position: absolute;
+//  top: 0;
+//  left: 0;
+//  right: 0;
+//  bottom: 0;
+//  background: rgba(0,0,0,0.5);
+//  z-index: 1000;
+//}
+//
+//.menu.ng-hide{
+//  -webkit-transform: translate(-500px,0);
+//  opacity: 0;
+//}
+//.shadow.ng-hide{
+//  opacity: 0;
+//}
+//.ng-hide-add, .ng-hide-remove {
+//  -webkit-transition:all 0.5s linear;
+//}
+//.menu{
+//  position: absolute;
+//  width: 80%;
+//  z-index: 1001;
+//  .header{
+//    color: #fff;
+////    background: -webkit-gradient(linear,from(#30B35E),to(#44972F));
+//    background: -webkit-linear-gradient(top, #44972F, #30B35E);
+//    text-align: center;
+//    .photo{
+//      padding-top: 20px;
+//      padding-bottom:10px ;
+//      img{
+//        border-radius: 50%;
+//        width: 100px;
+//      }
+//    }
+//    .balance{
+//      padding: 10px 0;
+//    }
+//    .phone{
+//      padding-top: 40px;
+//      padding-bottom: 10px;
+//      font-size: $font-title;
+//    }
+//  }
+//  .content{
+//    background: #fff;
+//    color: $color-panel-content;
+//
+//    li{
+//      padding: 20px 30%;
+//      background-repeat:no-repeat ;
+//      background-size:30px;
+//      background-position: 50px 15px;
+//      &:first-child{
+//        background-image: url("../../images/icon1.png");
+//      }
+//      &:nth-child(2){
+//        background-image: url("../../images/icon2.png");
+//      }
+//      &:nth-child(3){
+//        background-image: url("../../images/icon3.png");
+//      }
+//      &:nth-child(4){
+//        background-image: url("../../images/icon4.png");
+//      }
+//      &:last-child{
+//        background-image: url("../../images/icon5.png");
+//      }
+//      a{
+//        color: $color-panel-content;
+//      }
+//
+//    }
+//    .logout{
+//      text-align: center;
+//        border-top: 1px solid $color-panel-content;
+//      margin: 30px 160px 0 160px;
+//      padding: 10px 0 20px 0;
+//    }
+//  }
+//}
+//.title{
+//  padding:20px;
+//  text-align: center;
+//  background-color: $bg-title;
+//  color: $color-title;
+//  font-size: $font-title;
+//  &.index-title{
+//    font-size: $font-big;
+//  }
+//  .front-text{
+//    background-image: url("../../images/logo1.png");
+//    background-repeat: no-repeat;
+//    padding: 20px;
+//    background-size: 60%;
+//    background-position: 50%;
+//  }
+//  .title-left{
+//      background-image: url("../../images/icon_menu.png");
+//      background-repeat: no-repeat;
+//      padding: 20px;
+//      background-size: 80%;
+//      background-position: 50%;
+//      float: left;
+//    &.back{
+//      background-image: url("../../images/icon_arrow_left.png");
+//      padding: 15px;
+//      background-size: 60%;
+//    }
+//  }
+//  .title-right{
+//      color: $color-title;
+//      font-size: $font-normal;
+//    float: right;
+//    padding-top: 4px;
+//  }
+//
+//}
+//.index{
+//  margin-bottom: 80px;
+//}
+//.panel{
+//  .panel-title{
+//    background-color: $bg-panel-title;
+//    color: $color-panel;
+//    font-size: $font-title;
+//    padding:10px 20px;
+//  }
+//  .panel-body{
+//    background-color: $bg-panel-content;
+//    position: relative;
+//    border-bottom: 1px solid $bg;
+//    &.goods {
+//      padding: 20px;
+//
+//      .left {
+//        display: table-cell;
+//        vertical-align: top;
+//        padding-right: 20px;
+//      }
+//      .middle {
+//        display: table-cell;
+//        vertical-align: middle;
+//        width: 9999px;
+//        .type{
+//          font-size: $font-title;
+//          color: $color-content;
+//          .num{
+//            color: $color-panel;
+//          }
+//        }
+//        .content{
+//          font-size: $font-normal;
+//          color: $color-panel-content;
+//        }
+//      }
+//      .right{
+//        vertical-align: middle;
+//        font-size: $font-title;
+//        position: relative;
+//        top: -90px;
+//        float: right;
+//        li{
+//          float: left;
+//        }
+//        .sub{
+//          background-image: url("../../images/icon_sub.png");
+//          background-repeat: no-repeat;
+//          padding: 20px;
+//          background-size: 100%;
+//        }
+//        .add{
+//          background-image: url("../../images/icon_add.png");
+//          background-repeat: no-repeat;
+//          padding: 20px;
+//          background-size: 100%;
+//        }
+//        .total{
+//          width: 40px;
+//          text-align: center;
+//          line-height: 40px;
+//        }
+//      }
+//    }
+//    &.goods-detail{
+//      border: none;
+//      padding: 20px 0;
+//      .left{
+//        display: table-cell;
+//        vertical-align: top;
+//      }
+//      .right{
+//        display:table-cell;
+//        vertical-align:middle;
+//        font-size: $font-title;
+//        .border{
+//          border-left:3px solid $border-price;
+//          padding-left:20px;
+//        }
+//        .name{
+//          color: $color-content;
+//        }
+//        .price{
+//          color: $color-panel-content;
+//        }
+//      }
+//    }
+//    &.vs{
+//        padding: 30px 0;
+//      div{
+//        display: table-cell;
+//        vertical-align: middle;
+//        width: 9999px;
+//        text-align: center;
+//      }
+//      .vsfont{
+//        font-size: $font-big;
+//        color: $bg-title;
+//        span{
+//          color: $color-arrow;
+//        }
+//      }
+//    }
+//    &.flow{
+//      img{
+//        width: 100%;
+//      }
+//    }
+//  }
+//}
+//
+//.footer{
+//  color: $color-title;
+//  background: $bg-title;
+//  padding: 0 20px;
+//  position: fixed;
+//  bottom: 0;
+//  width: 690px;
+//  .pay{
+//    font-size: $font-title;
+//    width: 240px;
+//    float: left;
+//    line-height: 80px;
+//    border-right: 2px solid #54a640;
+//  }
+//  .sure{
+//    font-size: $font-big;
+//    padding: 20px 0;
+//    text-align: center;
+//    border-left: 2px solid #2F7F1D;
+//    display: table-cell;
+//    width: 999999px;
+//    a{
+//      color:$color-title;
+//    }
+//  }
+//}
+//.swiper-container{
+//  img{
+//    width: 100%;
+//  }
+//}
+//.swiper-pagination-bullet-active{
+//  background: #fff !important;
+//}
+//.swiper-pagination-bullet{
+//  background: url("../../images/icon_spot2.png") no-repeat;
+//  width: 11px;
+//  height: 11px;
+//  opacity: 1;
+//}
+//
+//.buy{
+//  margin-top: 10px;
+//  border: 1px solid $border-panel-text;
+//  box-shadow: 0px 10px 20px -10px #ccc;
+//  margin-bottom: 20px;
+//  .panel-body{
+//    padding: 0 30px;
+//    color: $color-content;
+//    li{
+//      padding: 30px 0;
+//      border-bottom: 1px solid $border-panel-text;
+//      input{
+//        border: none;
+//        background: $bg-panel-content;
+//        font-size: $font-normal;
+//        &:focus{
+//          border: none;
+//        }
+//      }
+//    }
+//    .getTime{
+//      border-bottom: none;
+//      span{
+//        float: right;
+//        background: url("../../images/icon_arrow_right.png") no-repeat;
+//        padding: 0 20px;
+//        background-size: 10px;
+//        background-position: 120px;
+//        display: inline-block;
+//      }
+//
+//    }
+//
+//  }
+//}
+//
+//
+//
+//@-webkit-keyframes fadeInLeft {
+//  0% {
+//    opacity: 0;
+//    -webkit-transform: translate3d(-100%, 0, 0);
+//    transform: translate3d(-100%, 0, 0);
+//  }
+//
+//  100% {
+//    opacity: 1;
+//    -webkit-transform: none;
+//    transform: none;
+//  }
+//}
+//
+//@keyframes fadeInLeft {
+//  0% {
+//    opacity: 0;
+//    -webkit-transform: translate3d(-100%, 0, 0);
+//    transform: translate3d(-100%, 0, 0);
+//  }
+//
+//  100% {
+//    opacity: 1;
+//    -webkit-transform: none;
+//    transform: none;
+//  }
+//}
+//
+//@-webkit-keyframes fadeOutRight {
+//  0% {
+//    opacity: 1;
+//  }
+//
+//  100% {
+//    opacity: 0;
+//    -webkit-transform: translate3d(100%, 0, 0);
+//    transform: translate3d(100%, 0, 0);
+//  }
+//}
+//
+//@keyframes fadeOutRight {
+//  0% {
+//    opacity: 1;
+//  }
+//
+//  100% {
+//    opacity: 0;
+//    -webkit-transform: translate3d(100%, 0, 0);
+//    transform: translate3d(100%, 0, 0);
+//  }
+//}

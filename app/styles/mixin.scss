@@ -1,0 +1,6 @@
+@mixin  border-inner($size,$color,$direction){
+  border-#{$direction}:$size solid $color ;
+  &:last-child{
+    border: none;
+  }
+}

@@ -1,0 +1,92 @@
+<menu  ></menu>
+<div class="title index-title" menulink><a href ng-click="toggle()" class="title-left"></a><i class="front-text"></i>洗呗</div>
+<div class="swiper-container">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide"><img src="{{img.src}}" width="{{img.width}}" alt=""/></div>
+    <div class="swiper-slide"><img src="{{img.src}}" width="{{img.width}}" alt=""/></div>
+    <div class="swiper-slide"><img src="{{img.src}}" width="{{img.width}}" alt=""/></div>
+  </div>
+  <div class="swiper-pagination"></div>
+  </div>
+<div class="index">
+<div class="panel" >
+  <div class="panel-title">鞋</div>
+  <div class="panel-body goods" ng-repeat="shose in shoses">
+
+    <div class="left"> <a href="#/detail/{{shose.type}}"><img src="{{shose.img}}" alt=""/></a></div>
+    <div class="middle">
+      <div class="type">{{shose.clothingName}}<span class="num">￥{{shose.itemMoney}}</span></div>
+      <div class="content"><p>说明：{{shose.itemName}}</p>
+        <p>{{shose.description}}</p></div>
+    </div>
+
+    <ul class="right">
+      <li class="sub" ng-click="sub(shose)"></li>
+      <li class="total">{{shose.count}}</li>
+      <li class="add" ng-click="add(shose)"></li>
+    </ul>
+  </div>
+</div>
+  <div class="panel" >
+    <div class="panel-title">包</div>
+    <div class="panel-body goods" ng-repeat="bag in bags">
+
+        <div class="left"><a href="#/detail/{{bag.type}}"><img src="{{bag.img}}" alt=""/></a></div>
+        <div class="middle">
+          <div class="type">{{bag.clothingName}}<span class="num">￥{{bag.itemMoney}}</span></div>
+          <div class="content"><p>说明：{{bag.itemName}}</p>
+            <p>{{bag.description}}</p></div>
+        </div>
+
+      <ul class="right">
+        <li class="sub" ng-click="sub(bag)"></li>
+        <li class="total">{{bag.count}}</li>
+        <li class="add" ng-click="add(bag)"></li>
+      </ul>
+    </div>
+  </div>
+  <div class="panel" >
+    <div class="panel-title">皮衣</div>
+    <div class="panel-body goods" ng-repeat="coat in coats">
+      <a href="#/detail/{{coat.type}}">
+        <div class="left"><img src="{{coat.img}}" alt=""/></div>
+        <div class="middle">
+          <div class="type">{{coat.clothingName}}<span class="num">￥{{coat.itemMoney}}</span></div>
+          <div class="content"><p>说明：{{coat.itemName}}</p>
+            <p>{{coat.description}}</p></div>
+        </div>
+      </a>
+      <ul class="right">
+        <li class="sub" ng-click="sub(coat)"></li>
+        <li class="total">{{coat.count}}</li>
+        <li class="add" ng-click="add(coat)"></li>
+      </ul>
+    </div>
+  </div>
+  <div class="panel" >
+    <div class="panel-title">沙发</div>
+    <div class="panel-body goods" ng-repeat="safa in safas">
+      <a href="#/detail/{{safa.type}}">
+        <div class="left"><img src="{{safa.img}}" alt=""/></div>
+        <div class="middle">
+          <div class="type">{{safa.clothingName}}<span class="num">￥{{safa.itemMoney}}</span></div>
+          <div class="content"><p>说明：{{safa.itemName}}</p>
+            <p>{{safa.description}}</p></div>
+        </div>
+      </a>
+      <ul class="right">
+        <li class="sub" ng-click="sub(safa)"></li>
+        <li class="total">{{safa.count}}</li>
+        <li class="add" ng-click="add(safa)"></li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+<div class="home-message" ng-show="showMessage">{{message}}</div>
+<div class="shadow" ng-show="showMessage" ng-click="showMessage = false"></div>
+<div class="footer" winwidth>
+  <div class="pay">共计：<span class="sum">{{total}}</span>元</div>
+  <div class="sure"><a ng-click="islogin()" >下单</a></div>
+</div>
+

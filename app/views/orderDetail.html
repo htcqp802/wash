@@ -1,0 +1,26 @@
+<div class="orderdetail">
+  <div class="title" ><a class="title-left back" backbtn></a>订单详情</div>
+  <div class="panel">
+    <div class="panel-title">订单详情</div>
+    <div class="panel-body detail panel-body-cell">
+      <ul ng-repeat="orderSon in order.orderSons">
+        <li>{{$index+1}}</li>
+        <li>{{orderSon.clothingName}}</li>
+        <li>{{orderSon.serviceName}}</li>
+        <li>{{orderSon.count}}</li>
+        <li>{{orderSon.unitPrice}}元</li>
+      </ul>
+    </div>
+  </div>
+  <div class="panel">
+    <div class="panel-title">订单信息</div>
+    <div class="panel-body panel-body-cell cell-list">
+      <ul>
+        <li>订单号：{{order.orderNo}}</li>
+        <li>取单时间：{{order.endDate}}</li>
+        <li>合计：<span class="text-green">{{order.payablePrice}}元</span></li>
+        <li>备注：{{order.orderText}}</li>
+      </ul>
+    </div>
+  </div>
+</div>

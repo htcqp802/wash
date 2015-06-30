@@ -1,0 +1,19 @@
+<div class="shadow loading" ng-hide="shadow"></div>
+<div class="title"><a class="title-left back" backbtn></a>付款</div>
+
+<div class="panel">
+  <div class="panel-title">订单信息（{{order.orderNo}}）</div>
+  <div class="panel-body detail panel-body-cell">
+
+    <ul ng-repeat="ordersons in order.orderSons">
+      <li>{{ordersons.clothingName}}</li>
+      <li>{{ordersons.serviceName}}</li>
+      <li>{{ordersons.count}}</li>
+      <li>{{ordersons.unitPrice}}</li>
+    </ul>
+  </div>
+  <div class="text-green text-infor">订单应付金额：{{order.payablePrice}}元</div>
+  <div class="title"  ng-click="pay()">
+    确认付款
+  </div>
+</div>

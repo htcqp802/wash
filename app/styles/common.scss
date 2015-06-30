@@ -1,0 +1,240 @@
+//@import "variables";
+//@import "mixin";
+*{
+  padding:0;
+  margin: 0;
+}
+
+body{
+  font-family: 'Microsoft Yahei', 'Simsun', Tahoma, Geneva;
+  font-size: $font-normal;
+  background-color: $bg;
+  color: $color-content;
+  overflow-x: hidden;
+}
+
+li{
+  list-style: none;
+}
+
+a{
+  text-decoration: none;
+  color: $color-content;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+}
+
+input{
+  outline: none;
+}
+
+.ng-enter{
+  z-index: 2000;
+  animation:fadeInLeft 1s;
+  -webkit-animation: fadeInLeft 1s;
+}
+.ng-leave{
+  z-index:1000;
+  animation:fadeOutRight 1s;
+  -webkit-animation: fadeOutRight 1s;
+}
+
+.container{
+  position:absolute;
+  width: 100%;
+  overflow: hidden;
+}
+
+.shadow{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.menu.ng-hide{
+  -webkit-transform: translate(-500px,0);
+  opacity: 0;
+}
+.shadow.ng-hide{
+  opacity: 0;
+}
+
+
+.ng-hide-add, .ng-hide-remove {
+  -webkit-transition:all 0.5s linear;
+}
+
+.being.ng-hide-add, .being.ng-hide-remove{
+  -webkit-transition:none;
+}
+
+.done.ng-hide-add, .done.ng-hide-remove{
+  -webkit-transition:none;
+}
+
+.text-green{
+  color: $color-panel;
+}
+.text-orange{
+  color: $color-orange;
+}
+
+.bg-green{
+  background: $bg-title !important;
+}
+.border-green{
+  border-color: $bg-title !important;
+}
+.text-greenDark{
+  color: $bg-title;
+}
+
+.inline-list{
+  li{
+    display: inline-block;
+  }
+}
+
+.panel{
+  .detail {
+    li {
+      @include border-inner(1px, $bg-title, right);
+      width: 10000px;
+      text-align: center;
+      display: table-cell;
+    }
+  }
+  .panel-body-cell{
+    padding:0 20px ;
+    ul{
+      padding: 20px 0;
+      @include border-inner(1px,$border-panel-text,bottom);
+      color: $color-content;
+    }
+  }
+
+  .cell-list{
+    li{
+      @include border-inner(1px,$border-panel-text,bottom);
+      padding: 20px 0;
+      color: $color-content;
+    }
+  }
+
+  .panel-body-cell.cell-list{
+    ul{
+      padding: 0;
+    }
+  }
+
+}
+
+.axis{
+  padding: 0 20px;
+  li{
+    margin: 0px -2px;
+  }
+  .point{
+    .circle{
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: $bg-gray;
+      margin: 0 auto;
+    }
+  }
+
+  .line{
+    width: 60px;
+    height: 5px;
+    border-top: 1px solid $bg-gray;
+  }
+}
+
+.axis_text{
+  li{
+    padding-left: 15px;
+  }
+
+}
+
+
+.btn
+{
+  background: #fff;
+  border: 1px solid $border-btn;
+  color: $color-btn;
+  padding: 5px 10px;
+  font-size: $font-title;
+}
+
+.btn-bottom{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.text-infor{
+  text-align: center;
+  font-size: 1.2em;
+  width: 100%;
+  padding: 20px 0;
+}
+
+.loading{
+  background-image: url("../images/loading.gif");
+  background-repeat: no-repeat;
+  background-position: 50%;
+}
+
+.home-message{
+  color:$bg-baner-dark;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  background-color:$border-btn ;
+  padding:20px 50px;
+  margin-left: -130px;
+  border-radius: 5px;
+  z-index: 99999;
+  font-size: $font-big;
+}
+
+.pickDate{
+  margin-bottom: 20px;
+  p{
+    display: inline-block;
+    margin: 15px;
+    font-size: 1.2em;
+    /* padding: 5px; */
+    border-bottom: 1px solid #CBD3C8;
+    color: #559E45;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    &.active{
+      color: #fff;
+      background-color: #44972F;
+      border-radius: 50%;
+      border-bottom: 0;
+      /* padding: 40px; */
+      width: 28px;
+      height: 28px;
+      text-align: center;
+      -webkit-align-content: center;
+      /* align-content: center; */
+      line-height: 30px;
+
+    }
+  }
+}
+
+
+

@@ -1,0 +1,24 @@
+<div class="title"><a class="title-left back" backbtn></a>{{commodity.name}}</div>
+<div class="panel">
+  <div class="panel-title">
+    {{commodity.name}}价格:
+  </div>
+  <div class="panel-body goods-detail" ng-repeat="one in commodity.type">
+      <div class="left"><img src="{{one.url}}" alt=""/></div>
+      <div class="right"><div class="border"><p class="name">说明:{{one.name}}</p><p class="price">价格:{{one.price}}元</p></div></div>
+  </div>
+</div>
+<div class="panel">
+  <div class="panel-title">护理前后对比</div>
+  <div class="panel-body vs">
+    <div><img src="{{commodity.beforeImg}}"></div>
+    <div class="vsfont">前<span>VS</span>后</div>
+    <div><img src="{{commodity.afterImg}}"></div>
+  </div>
+</div>
+<div class="panel">
+  <div class="panel-title">{{commodity.name}}的服务流程</div>
+  <div class="panel-body flow">
+    <img src="images/flow.jpg">
+  </div>
+</div>

@@ -1,0 +1,53 @@
+<div class="shadow loading" ng-hide="shadow"></div>
+<div class="title"><a class="title-left back" backbtn></a>下单</div>
+<form>
+  <div class="panel buy">
+    <div class="panel-title">填写下单项:</div>
+    <div class="panel-body">
+      <ul>
+        <li>联系电话：<input type="text" ng-model="order.vipMobile"/></li>
+        <li>联系人：<input type="text" ng-model="order.vipName"/></li>
+        <li>地址：<input type="text" ng-model="order.vipAddress"/></li>
+        <!--<input type="date" ng-model="order.endDate"  placeholder="yyyy-MM-dd" />-->
+        <li class="getTime">取单时间<span ><a style="color:red">{{error}}</a>{{endDate}}&nbsp;&nbsp;<select ng-model="endTime" ng-show="endDate">
+          <option value="10:00-12:00">10:00-12:00</option>
+          <option value="13:00-18:00" >13:00-18:00</option>
+          <option value="20:00-22:00">20:00-22:00</option>
+        </select></span></li>
+
+      </ul>
+
+    </div>
+
+  </div>
+  <div class="pickDate" pickdate>
+    <p>1</p>
+
+    <p>2</p>
+
+    <p>3</p>
+
+    <p>4</p>
+
+    <p>5</p>
+
+    <p>6</p>
+
+    <p>7</p>
+
+    <p>8</p>
+
+    <p>9</p>
+
+    <p>10</p>
+
+    <p>11</p>
+
+    <p>12</p>
+
+    <p>13</p>
+  </div>
+  <div class="title" ng-click="makeOrder()">
+    确认下单
+  </div>
+</form>

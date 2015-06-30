@@ -1,0 +1,14 @@
+<div class="login"  winheight>
+  <div class="close"><a backbtn>X</a></div>
+<div class="logo"><img src="images/logo1.png" alt=""/><p>洗呗</p></div>
+  <div class="error">{{err}}</div>
+<div class="form-group">
+  <input type="text" name="phone" placeholder="请输入手机号" class="phone" ng-model="phone"/><a class="btn"  timer phone="{{phone}}">{{checkCode}}</a>
+  <input type="text" placeholder="请输入验证码" ng-model="code"/>
+  <!--<input type="text" placeholder="请输入用户名" ng-model="user.name"/>-->
+  <!--<input type="password" placeholder="请输入密码" ng-model="user.password" />-->
+</div>
+<div class="login-btn">
+  <a ng-click="login()">登录</a>
+</div>
+</div>

@@ -1,0 +1,20 @@
+<div class="ng-menu"  ng-controller="HomeCtrl" >
+  <div class="shadow"  ng-show="showMenu" ng-click="toggle()" ></div>
+  <div class="menu " ng-show="showMenu" >
+    <div class="header">
+      <div class="photo"><img src="images/yeoman.png" alt=""/></div>
+      <div class="balance">余额：{{user.vipCardBalances}}元</div>
+      <div class="phone">{{user.vipPhone}}</div>
+    </div>
+    <div class="content">
+      <ul>
+        <li><span></span><a href="#/">首页</a></li>
+        <li><span></span><a href="#/myOrder">全部订单</a></li>
+        <li><span></span><a href="#/address">常用地址</a></li>
+        <li><span></span><a href="#/opinion">意见反馈</a></li>
+        <li><span></span><a href="#/deal">意见反馈</a></li>
+      </ul>
+      <div class="logout"><a ng-click="logout()">退出</a></div>
+    </div>
+  </div>
+</div>
