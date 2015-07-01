@@ -105,7 +105,6 @@ washAppControllers.controller('HomeCtrl', function ($scope, $window, commodities
     pagination: '.swiper-pagination'
   });
   $scope.img = {
-    src: 'images/pic_banner.png',
     width: $window.innerWidth + 'px'
   }
 
