@@ -38,10 +38,10 @@ angular.module("washApp").factory('login', function ($http, $q) {
    *
    */
 
-  function Base64() {
+  function base64() {
 
     // private property
-    _keyStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+   var _keyStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
 
     // public method for encoding
     this.encode = function (input) {
@@ -97,7 +97,7 @@ angular.module("washApp").factory('login', function ($http, $q) {
     }
 
     // private method for UTF-8 encoding
-    _utf8_encode = function (string) {
+   var _utf8_encode = function (string) {
       string = string.replace(/\r\n/g, "\n");
       var utftext = "";
       for (var n = 0; n < string.length; n++) {
@@ -118,7 +118,7 @@ angular.module("washApp").factory('login', function ($http, $q) {
     }
 
     // private method for UTF-8 decoding
-    _utf8_decode = function (utftext) {
+   var _utf8_decode = function (utftext) {
       var string = "";
       var i = 0;
       var c = c1 = c2 = 0;
@@ -154,7 +154,6 @@ angular.module("washApp").factory('login', function ($http, $q) {
           'code':code
         }
       }).success(function (data) {
-        console.log(data);
         d.resolve(data.content);
       }).error(function(err){
         d.reject(err.message);
@@ -167,6 +166,23 @@ angular.module("washApp").factory('login', function ($http, $q) {
         if (data.result) {
           d.resolve(data.content);
         }
+      });
+      return d.promise;
+    },
+    getUserByName:function(user){
+      var d = $q.defer();
+      var b = new base64();
+      var str = b.encode(user.name+":"+user.password);
+      $http({
+        url:"http://112.126.72.187:8088/v1/api/vipUser/vipUserLogin?api_key=cXdlOmFzZDp6eGM%3D",
+        method:"get",
+        headers:{
+          Authorization:"base "+str
+        }
+      }).success(function(data){
+        d.resolve(data.content);
+      }).error(function(error){
+        d.reject(error.message);
       });
       return d.promise;
     }

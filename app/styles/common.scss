@@ -209,32 +209,48 @@ input{
 .pickDate{
   margin-bottom: 20px;
   p{
-    display: inline-block;
-    margin: 15px;
+        display: inline-block;
+    /* margin: 2%; */
     font-size: 1.2em;
     /* padding: 5px; */
-    border-bottom: 1px solid #CBD3C8;
+   
     color: #559E45;
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    height: 50px;
     text-align: center;
-    line-height: 30px;
+    line-height: 50px;
+    display: table-cell;
+     
     &.active{
       color: #fff;
       background-color: #44972F;
       border-radius: 50%;
       border-bottom: 0;
       /* padding: 40px; */
-      width: 28px;
-      height: 28px;
+      width: 50px;
+      height: 50px;
       text-align: center;
       -webkit-align-content: center;
       /* align-content: center; */
-      line-height: 30px;
-
+      line-height: 50px;
+      span{
+        border-bottom: 0;
+       padding-bottom: 0;
+      }
+    }
+    span{
+       border-bottom: 1px solid #CBD3C8;
+       padding-bottom: 2px;
     }
   }
 }
 
+.byPhone{
+  color:#0000ff;
+  text-decoration: underline;
+  float: right;
+}
 
-
+.form-group.ng-hide-add, .form-group.ng-hide-remove{
+  -webkit-transition:none;
+}

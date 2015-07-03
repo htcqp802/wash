@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>活动页</title>
+	<meta charset = "utf-8">
+	<meta name="viewport" content="width=device-width,user-scalable=no">
+	<link rel = "Shortcut Icon" href="images/logo1.png"> 
+	<style>
+	*{
+		padding: 0;
+		margin: 0;
+	}
+		body{
+			background: #44972F;
+    		padding: 0 20px;
+			font-family: 'Microsoft Yahei', 'Simsun', Tahoma, Geneva;
+			font-size: 16px;
+		}
+		a{
+			text-decoration: none;
+		}
+
+		.logo {
+		    text-align: center;
+		    font-size: 2em;
+		    color: #fff;
+		    padding: 20px;
+		    padding-bottom: 0;
+		}
+		.form-group input {
+		    height: 40px;
+		    line-height: 40px;
+		    border: 2px solid #287715;
+		    background: #D9EBD5;
+		    width: 100%;
+		    border-radius: 5px;
+		    margin: 10px 0;
+		    font-size: 1.2em;
+		    color: #479530;
+		}
+		.login-btn a {
+		    color: #fff;
+		    border-radius: 5px;
+		    padding: 13px 0;
+		    text-align: center;
+		    background: #6AAA59;
+		    width: 100%;
+		    display: block;
+		    font-size: 1.2em;
+		}
+		.message{
+			width: 100%;
+			height: 20px;
+			text-align: center;
+			line-height: 20px;
+		}
+		.text{
+			    color: #003300;
+    font-size: 12px;
+    background: #fff;
+    border-top: 5px solid #287715;
+    margin-top: 20px;
+    text-indent: 2em;
+    padding: 0 10px;
+    line-height: 20px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+		}
+		.title{
+			color: #287715;
+			font-size: 14px;
+			text-indent:0em;
+			    margin-top: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div class="logo">
+		<img src="images/logo1.png" alt="">
+		<p>洗吧</p>
+	</div> 
+	<div class="message"></div>
+	<div class="form-group">
+		<input type="text" placeholder="请填写手机号" id="phone"></div>
+	<div class="login-btn">
+		<a href="javascript:post();">参加</a>
+	</div>
+	<div class="text">
+		<p class="title">活动名称：</p>
+		<p>首单免费</p>
+		<p class="title">活动规则：</p>
+		<p>1、新注册用户首次可用；</p>
+		<p>2、首单最大免金额50元；</p>
+		<p>3、本优惠为一次性消费，余额不计入帐户，不可提现；</p>
+		<p class="title">有效期：</p><p>2015.07.01至2015年09.01（周六日，节假日通用，免预约）</p>
+		<p class="title">服务地址：</p><p>北京市朝阳区小黄庄5号瀚皇店</p>
+		<p class="title">电话：</p><p>13521009720</p>
+	</div>
+</body>
+	<script src="http://libs.baidu.com/zepto/0.8/zepto.min.js"></script>
+	<script>
+	function post () {
+		
+		$.ajax({
+			url:"http://112.126.72.187:8088/v1/api/vipUser/"+$("#phone").val()+"/1/23835163909685258/2/asdqqeadsww?api_key=cXdlOmFzZDp6eGM%3D",
+			type:"post",
+			contentType:"application/json",
+			success:function(data){
+				console.log("success:"+data);
+				$(".message").text("添加成功，感谢参与！");
+				$(".message").css("color","#287715")
+			},
+			error:function(error) {
+				$(".message").text(JSON.parse(error.response).message);
+				$(".message").css("color","red");
+			}
+		})
+		
+	}
+		
+	</script>
+</html>

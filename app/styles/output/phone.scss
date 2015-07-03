@@ -6,6 +6,7 @@
 
 
 .menu{
+  
   position: absolute;
   width: 80%;
   z-index: 1001;
@@ -328,6 +329,7 @@
     }
   }
   .form-group{
+    position: relative;
     input{
       height: 40px;
       line-height: 40px;
@@ -338,6 +340,7 @@
       margin: 10px 0;
       font-size: $font-title;
       color:#479530;
+
 
     }
     .phone{
@@ -456,4 +459,7 @@
   color:#cc0000;
   font-size: 1.2em;
   text-align: center;
+  line-height: 1.2em;
+  height: 20px;
+  width: 100%;
 }

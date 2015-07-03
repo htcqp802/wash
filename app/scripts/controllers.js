@@ -147,7 +147,7 @@ washAppControllers.controller('HomeCtrl', function ($scope, $window, commodities
 
   $scope.islogin = function () {
     if (localStorage.getItem("isLogin")) {
-      if($scope.total >= 50){
+      if($scope.total >= 38){
         setOrderSon($scope.shoses);
         setOrderSon($scope.bags);
         setOrderSon($scope.safas);
@@ -157,7 +157,7 @@ washAppControllers.controller('HomeCtrl', function ($scope, $window, commodities
         $window.location.href = "#/buy";
 
     }else{
-        $scope.message = "至少50元才可在线下单";
+        $scope.message = "至少38元才可在线下单";
         $scope.showMessage = true;
       }
     }else {
@@ -198,6 +198,23 @@ washAppControllers.controller('DetailCtrl', function ($scope, $routeParams, comm
  * 下单页控制器
  */
 washAppControllers.controller('BuyCtrl', function ($scope,$window, $filter, $http, order) {
+  $scope.dates = [];
+var d = new Date();
+switch (d.getDay()){
+  case 0:
+  $scope.week = "周一";
+  case 1:
+  $scope.week = "周二";
+  case 5:
+  $scope.week = "周五"
+}
+  for(var i = 0;i < 7;i++){
+    d = +d+1000*60*60*24;
+    $scope.dates.push(d);
+    // $scope.ymd.push($filter('date')(new Date()))
+  }
+
+
   order.checkUser();
   $scope.endTime = "10:00-12:00";
   if(order.getOrder("order")){
@@ -224,6 +241,7 @@ washAppControllers.controller('BuyCtrl', function ($scope,$window, $filter, $htt
     "normalEndDate": "null",
     "payablePrice": order.getOrder("order").payablePrice,
     "realPrice": order.getOrder("order").payablePrice,
+    "orderNo":"null",
     "couponId": 0,
     "couponCode": "null",
     "couponType": 0,
@@ -237,6 +255,7 @@ washAppControllers.controller('BuyCtrl', function ($scope,$window, $filter, $htt
     "state": 6
   };
   $scope.makeOrder = function () {
+    $scope.endDate = $filter('date')(new Date(),'yyyy年MM月dd日')
     if($scope.endDate == undefined || $scope.endTime == undefined){
       $scope.error = "请选择取单时间";
       return;
@@ -249,10 +268,12 @@ washAppControllers.controller('BuyCtrl', function ($scope,$window, $filter, $htt
       if (data.result) {
         localStorage.removeItem("order");
         order.setOrder("order", data.content);
-        location.href = "#/pay"
+        location.href = "#/myOrder"
       }
     }).error(function (err) {
-      console.log(err);
+      $scope.message = err.message;
+      $scope.showMessage = true;
+      angular.element($window.document.getElementsByClassName("shadow")[0]).removeClass("loading");
     })
   }
 })
@@ -261,17 +282,38 @@ washAppControllers.controller('BuyCtrl', function ($scope,$window, $filter, $htt
  * 登录页控制器
  */
 washAppControllers.controller('LoginCtrl', function ($scope,login) {
+  $scope.togglemess = "通过账号密码登录";
+$scope.toggle = function(){
+  $scope.byPhone = !$scope.byPhone;
+  if($scope.byPhone){
+    $scope.togglemess = "通过手机验证码登录";
+  }else{
+    $scope.togglemess = "通过账号密码登录";
+  }
+}
   $scope.login = function () {
     login.getShop().then(function (data) {
       localStorage.setItem("shop", JSON.stringify(data));
     })
-    login.getUser($scope.phone,$scope.code).then(function (data) {
-      localStorage.setItem("user", JSON.stringify(data[0]));
-      localStorage.setItem("isLogin", true);
-      history.back();
-    }, function (err) {
-      $scope.err = err;
-    })
+    if($scope.byPhone){
+      login.getUserByName($scope.user).then(function(data){
+        localStorage.setItem("user", JSON.stringify(data));
+        localStorage.setItem("isLogin", true);
+        history.back();
+      },function(err){
+        $scope.err = err;
+      })
+    }else{
+      login.getUser($scope.phone,$scope.code).then(function (data) {
+        localStorage.setItem("user", JSON.stringify(data[0]));
+        localStorage.setItem("isLogin", true);
+        history.back();
+      }, function (err) {
+        $scope.err = err;
+      });
+    }
+
+
   }
 
 });
@@ -279,26 +321,31 @@ washAppControllers.controller('LoginCtrl', function ($scope,login) {
 /**
  * 我的订单
  */
-washAppControllers.controller('MyOrderCtrl', function ($scope,$http,order) {
+washAppControllers.controller('MyOrderCtrl', function ($scope,$http,$window,order) {
   order.checkUser();
-  $http.get("http://112.126.72.187:8088/v1/api/order/getOrderByPayState/"+order.getOrder("shop").id+"/1?api_key=cXdlOmFzZDp6eGM%3D").success(function(data){
+  // $http.get("http://112.126.72.187:8088/v1/api/order/getOrderByPayState/"+order.getOrder("shop").id+"/1?api_key=cXdlOmFzZDp6eGM%3D").success(function(data){
 
-    var content = data.content;
-    $scope.orderDone = [];
-    angular.forEach(content,function(obj){
-      if(obj.vipId == order.getOrder("user").id){
-        $scope.orderDone.push(obj);
-      }
-    })
-  }).error(function(err){
-    console.log(err);
-  });
-  $http.get("http://112.126.72.187:8088/v1/api/order/getOrderByPayState/"+order.getOrder("shop").id+"/0?api_key=cXdlOmFzZDp6eGM%3D").success(function(data){
+  //   var content = data.content;
+  //   $scope.orderDone = [];
+  //   angular.forEach(content,function(obj){
+  //     if(obj.vipId == order.getOrder("user").id){
+  //       $scope.orderDone.push(obj);
+  //     }
+  //   })
+  // }).error(function(err){
+  //   console.log(err);
+  // });
+var phone = order.getOrder('user').vipPhone.substring(0,7);
+  $http.get("http://112.126.72.187:8088/v1/api/order?vipPhone="+ phone +"&api_key=cXdlOmFzZDp6eGM%3D").success(function(data){
     var content = data.content;
     $scope.orderBeing = [];
+    $scope.orderDone = [];
     angular.forEach(content,function(obj){
-      if(obj.vipId == order.getOrder("user").id){
+      if(obj.state != 5){
         $scope.orderBeing.push(obj);
+      }
+      if(obj.state == 4){
+        $scope.orderDone.push(obj);
       }
     })
   }).error(function(err){
@@ -321,6 +368,22 @@ washAppControllers.controller('MyOrderCtrl', function ($scope,$http,order) {
 
   $scope.toOrderDetail = function(orderNo){
     location.href = "#/orderDetail/"+orderNo;
+  }
+  $scope.cancelOrder = function(order){
+    order.state = 5;
+    console.log(order.state);
+    $http({
+      url:"http://112.126.72.187:8088/v1/api/order/updateOrder?api_key=cXdlOmFzZDp6eGM%3D",
+      method:"put",
+      data:order
+    }).success(function(obj){
+        if(obj.result){
+          console.log(11)
+          $window.location.href = "#/myOrder";
+        }
+    }).error(function(error){
+        console.log(error);
+    });
   }
 })
 

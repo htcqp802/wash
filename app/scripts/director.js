@@ -141,15 +141,12 @@ washAppDirector.directive("pickdate",function($window,$filter){
   return{
     restrict:"AE",
     link:function(scope,ele,attr){
-      ele.children().bind("click",function(){
-        ele.children().removeClass("active");
-        var p = angular.element(this);
-        p.addClass("active");
-        var d = new Date();
-        d = +d+1000*60*60*24*parseInt(p.text());
+      ele.bind("click",function(e){
+        ele.parent().children().removeClass("active");
+        ele.addClass("active");
         scope.$apply(function(){
           scope.error = null;
-          scope.endDate = $filter('date')(new Date(d),'yyyy年MM月dd日');
+          scope.endDate = $filter('date')(attr.date,'yyyy年MM月dd日');
         });
       })
     }

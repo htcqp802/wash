@@ -3,11 +3,11 @@
 
   <div class="title index-title" menulink><a class="title-left"  ng-click="toggle()" ></a>我的订单
   <div class="my_order-baner">
-    <a class="left" ng-class="{'active':isActive}" ng-click="tab(true)">服务中</a><a class="right" ng-class="{'active':!isActive}" ng-click="tab()">已完成</a>
+    <a class="left" ng-class="{'active':!isActive}" ng-click="tab()">服务中</a><a class="right" ng-class="{'active':isActive}" ng-click="tab(true)">已完成</a>
   </div>
   </div>
 
-  <div class="panel being" ng-hide="isActive" ng-repeat="done in orderDone | orderBy:'endDate'">
+  <div class="panel being" ng-hide="!isActive" ng-repeat="done in orderDone | orderBy:'endDate'">
     <div class="panel-title">订单号：{{done.orderNo}}</div>
     <div class="panel-body img-text" ng-click="toOrderDetail(done.orderNo)">
       <div class="left"><img src="images/after_shoes.jpg"></div>
@@ -27,9 +27,9 @@
     </div>
   </div>
 
-  <div class="panel done" ng-hide="!isActive" ng-repeat="being in orderBeing">
+  <div class="panel done" ng-hide="isActive" ng-repeat="being in orderBeing">
     <div class="panel-title ">订单号：{{being.orderNo}}</div>
-    <div class="panel-body" ng-click="toOrderDetail(being.orderNo)">
+    <div class="panel-body" >
       <ul class="inline-list axis">
         <li class="point"><div class="circle current bg-green"></div></li>
         <li class="line border-green"></li>
@@ -38,18 +38,20 @@
         <li class="point"><div class="circle current"></div></li>
         <li class="line"></li>
         <li class="point"></li>
+         <li class="point"><div class="circle current"></div></li>
       </ul>
       <ul class="inline-list axis_text">
         <li class="text-greenDark">已下单</li>
         <li>等待确认</li>
         <li>等待取单</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;完成</li>
       </ul>
       <div class="panel-body img-text">
-        <div class="left"><img src="images/after_shoes.jpg"></div>
+        <div class="left" ng-click="toOrderDetail(being.orderNo)"><img src="images/after_shoes.jpg"></div>
         <div class="right">
           <div class="time">预约时间：{{being.endDate}}</div>
           <div class="time">金额：{{being.payablePrice}}元</div>
-          <button class="btn">取消订单</button><button class="btn" ng-click="pay(being)">付款</button>
+          <button class="btn" ng-click="cancelOrder(being)">取消订单</button><button class="btn" ng-click="pay(being)">付款</button>
         </div>
       </div>
     </div>
